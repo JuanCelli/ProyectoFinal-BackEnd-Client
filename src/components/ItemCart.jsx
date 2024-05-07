@@ -56,7 +56,6 @@ export const ItemCart = ({thumbnail,title, price, quality, id}) => {
         <InfoItem>${price}</InfoItem>
         <InfoItem>{quality}</InfoItem>
         <InfoItem>${price*quality}</InfoItem>
-        <Buttom>X</Buttom>
     </ContainerItem>
   )
 }

@@ -3,6 +3,7 @@ import { HeaderUsers, ItemUser } from '../components/ItemUser'
 import MainContainer from '../styles/components/MainContainer'
 import { SectionContainer } from '../styles/components/SectionContainer'
 import { useNavigate } from 'react-router-dom'
+import { urlBase } from '../config/url'
 
 
 const Users = () => {
@@ -12,7 +13,7 @@ const Users = () => {
   const navigate = useNavigate()
   
   const fetchUsers = async () =>{
-      const usersFetch = await fetch("http://localhost:8080/api/users/",{
+      const usersFetch = await fetch(`${urlBase}api/users/`,{
         method: 'GET',
         credentials: 'include'
       })
@@ -29,7 +30,7 @@ const Users = () => {
       }
     }
   const fetchUser = async () =>{
-      const reponse = await fetch("http://localhost:8080/api/sessions/current",{
+      const reponse = await fetch(`${urlBase}api/sessions/current`,{
         method: 'GET',
         credentials: 'include'
       })
@@ -50,7 +51,7 @@ const Users = () => {
 
 
   const deleteUser = async (id) =>{
-      const response = await fetch(`http://localhost:8080/api/users/${id}`,{
+      const response = await fetch(`${urlBase}api/users/${id}`,{
         method: 'DELETE',
       })
       if(response.ok){
@@ -62,7 +63,7 @@ const Users = () => {
   }
 
   const ChangeRole = async (id) =>{
-    const response = await fetch(`http://localhost:8080/api/users/premium/${id}`,{
+    const response = await fetch(`${urlBase}api/users/premium/${id}`,{
       method: 'PUT',
     })
     if(response.ok){

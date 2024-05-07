@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom'
 import Product from '../components/Product'
 import styled from 'styled-components'
 import { colors } from '../styles/config'
+import { urlBase } from '../config/url'
+
 
 const ContainerProducts = styled.div`
   display: flex;
@@ -25,7 +27,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const fetchUser = async () =>{
-    const reponse = await fetch("http://localhost:8080/api/sessions/current",{
+    const reponse = await fetch(`${urlBase}api/sessions/current`,{
       method: 'GET',
       credentials: 'include'
     })
@@ -44,7 +46,7 @@ const Home = () => {
 
   const addToCart = async (idProduct) =>{
 
-    const cartFetch = await fetch("http://localhost:8080/api/carts",{
+    const cartFetch = await fetch(`${urlBase}api/carts`,{
       method: 'GET',
       credentials: 'include'
     })
@@ -53,7 +55,7 @@ const Home = () => {
       const cartData = await cartFetch.json()
       setCart(cartData._id)
     }else{
-      const response = await fetch("http://localhost:8080/api/carts/",{
+      const response = await fetch(`${urlBase}api/carts/`,{
         method: 'POST',
         body: JSON.stringify({}),
         credentials: 'include'
@@ -69,7 +71,7 @@ const Home = () => {
 
     }
     
-    const res = await fetch(`http://localhost:8080/api/carts/${cart}/product/${idProduct}`,{
+    const res = await fetch(`${urlBase}api/carts/${cart}/product/${idProduct}`,{
       method: 'POST',
       body: JSON.stringify({}),
       credentials: 'include'
@@ -83,7 +85,7 @@ const Home = () => {
   }
 
    const fetchCart = async () =>{
-    const cartFetch = await fetch("http://localhost:8080/api/carts",{
+    const cartFetch = await fetch(`${urlBase}api/carts`,{
       method: 'GET',
       credentials: 'include'
     })
@@ -98,7 +100,7 @@ const Home = () => {
   
 
   const fetchProducts = async () =>{
-    const reponse = await fetch("http://localhost:8080/api/products",{
+    const reponse = await fetch(`${urlBase}api/products`,{
       method: 'GET',
       credentials: 'include'
     })

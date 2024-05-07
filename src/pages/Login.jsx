@@ -2,6 +2,7 @@ import React from 'react'
 import MainContainer from '../styles/components/MainContainer'
 import { SectionContainer } from '../styles/components/SectionContainer'
 import { useNavigate } from 'react-router-dom'
+import { urlBase } from '../config/url'
 
 
 const Login = () => {
@@ -14,7 +15,7 @@ const Login = () => {
         const object = {}
         data.forEach((value,key) =>object[key]=value)
 
-        const response = await fetch("http://localhost:8080/api/sessions/login",{
+        const response = await fetch(`${urlBase}api/sessions/login`,{
             method: "POST",
             body: JSON.stringify(object),
             headers:{
@@ -45,7 +46,7 @@ const Login = () => {
                     <input type="submit" value="Ingresar" />
                 </form>
                 <p>¿Aún no estás registrado? <a href="/register">Registrarme</a></p>
-                <p>Ingresar con <a href="http://localhost:8080/api/sessions/github-login">GitHub</a></p>
+                <p>Ingresar con <a href={`${urlBase}api/sessions/github-login`}>GitHub</a></p>
                 <p>¿Olvidaste Tu contraseña? <a href="/users/form-mail">Click aqui</a></p>
             </div>
 

@@ -2,6 +2,7 @@ import React from 'react'
 import MainContainer from '../styles/components/MainContainer'
 import { SectionContainer } from '../styles/components/SectionContainer'
 import { useNavigate } from 'react-router-dom'
+import { urlBase } from '../config/url'
 
 const Register = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Register = () => {
         const object = {}
         data.forEach((value,key) =>object[key]=value)
     
-        const response = await fetch("http://localhost:8080/api/sessions/register",{
+        const response = await fetch(`${urlBase}api/sessions/register`,{
             method: "POST",
             body: JSON.stringify(object),
             headers:{

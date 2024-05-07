@@ -3,6 +3,7 @@ import MainContainer from '../styles/components/MainContainer'
 import { SectionContainer } from '../styles/components/SectionContainer'
 import { FooterCart, HeaderCart ,ItemCart } from '../components/ItemCart'
 import { useNavigate } from 'react-router-dom'
+import { urlBase } from '../config/url'
 
 
 const Cart = () => {
@@ -12,7 +13,7 @@ const Cart = () => {
     const navegate = useNavigate()
 
     const fetchCart = async () =>{
-        const cartFetch = await fetch("http://localhost:8080/api/carts",{
+        const cartFetch = await fetch(`${urlBase}api/carts`,{
           method: 'GET',
           credentials: 'include'
         })
@@ -31,7 +32,7 @@ const Cart = () => {
       }
     
     const purchaseCart = async (idCart)=>{
-      const purchase = await fetch(`http://localhost:8080/api/carts/${idCart}/purchase`,{
+      const purchase = await fetch(`${urlBase}api/carts/${idCart}/purchase`,{
         method: 'POST',
       })
   
