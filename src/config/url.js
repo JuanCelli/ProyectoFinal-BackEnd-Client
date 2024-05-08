@@ -1,1 +1,1 @@
-export const urlBase = "https://proyectofinal-backend-production-0a67.up.railway.app/"
+export const urlBase = "http://localhost:8080/"
